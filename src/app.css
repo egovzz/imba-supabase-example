@@ -66,6 +66,24 @@
   button:focus-visible {
 	outline: 4px auto -webkit-focus-ring-color;
   }
+
+  input {
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid #333;
+	padding: 8px;
+	font-size: 0.9rem;
+	background-color: #101010;
+	color: #fff;
+	/* outline: 1px solid #646cff; */
+  }
+
+  input:focus {
+	outline: none !important;
+    border: 2px solid #646cff;
+	-webkit-transition: 0.5s;
+  	transition: 0.5s;
+  }
   
   @media (prefers-color-scheme: light) {
 	:root {

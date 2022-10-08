@@ -30,18 +30,14 @@ export default tag Auth
 		finally 
 			loading = false
 
-	def checkSession
-		# let mysession = await supabase.auth.getSession!.then do({ data: { session } }) console.log 'data: ', session
-		let mysession = await supabase.auth.getSession!
-		console.log 'mysession: ', mysession.data.session
-
 	<self>
 		<div.container>
+			<h1> 'Imba + Supabase'
 			if loading
 				<p> 'Loading....'
 			else
 				<input type='text' placeholder='email...' bind=email>
 				<input type='text' placeholder='password...' bind=pass>
 				<div>
-					<button @click=checkSession> 'Signup'
+					<button @click=handleSignup> 'Signup'
 					<button @click=handleLogin> 'Login'
