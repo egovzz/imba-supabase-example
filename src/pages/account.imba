@@ -1,8 +1,10 @@
 import { supabase } from '../supabaseClient'
 
+import Avatar from '../components/avatar.imba'
+
 export default tag Account
 
-	css .form-widget d:flex fld:column g:20px ta:left p: 50px 0
+	css .form-widget d:flex fld:column g:20px ta:left p: 50px 0 min-width:400px
 
 	prop session
 	prop username
@@ -11,7 +13,7 @@ export default tag Account
 
 	prop loading = no
 
-	def getProfile do
+	def getProfile
 		try
 			loading = yes
 			const { user } = session
@@ -31,29 +33,58 @@ export default tag Account
 				avatarUrl = data.avatar_url
 
 		catch error
-			alert(error.message)
+			window.alert error.message
+		finally
+			loading = no
+			imba.commit! # This will update the screen with the new data
+
+	def updateProfile newAvatarUrl
+		try
+			loading = yes
+			const { user } = session
+
+			const updates = {
+				id: user.id,
+				username,
+				website,
+				avatar_url: newAvatarUrl ?? avatarUrl,
+				updated_at: new Date(),
+			}
+
+			let { error } = await supabase.from('profiles').upsert(updates)
+
+			if error
+				throw error
+
+			avatarUrl = newAvatarUrl
+
+			imba.commit!
+		catch error
+			window.alert error.message
 		finally
 			loading = no
 
-
-
-	def mount do
+	def setup
 		getProfile!
-
 
 	<self>
 		<div>
 			if loading
 				<p> 'Loading...'
 			else
+				<Avatar 
+					url=avatarUrl
+					onUpload=(do(url) updateProfile(url))
+				/>
 				<div.form-widget>
 					<div> "Email: {session.user.email}"
 					<div>
-						<label htmlFor="username"> 'Name'
+						<label htmlFor="username"> 'Username'
 						<input id="username" type="text" bind=username />
 					<div>
 						<label htmlFor="website"> 'Website'
-						<input id="website" type="text" bind=website />
-						<button disabled=loading> 'Update profile'
+						<input id="website" type="text" bind=website />	
+					<div>
+						<button disabled=loading @click=updateProfile!> 'Update profile'
 		
 		<button @click=supabase.auth.signOut!> 'Log out'

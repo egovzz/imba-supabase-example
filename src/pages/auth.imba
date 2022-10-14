@@ -13,9 +13,6 @@ export default tag Auth
 			email: email,
 			password: pass,
 		})
-		console.log 'user: ' + user
-		console.log 'session: ' + session
-		console.log 'error: ' + error
 
 	def handleLogin
 		try 
@@ -25,8 +22,7 @@ export default tag Auth
 				throw error
 			# alert('Check your email for the login link!')
 		catch error
-			# alert(error.error_description || error.message)
-			console.log 'error: ', error
+			window.alert(error.error_description || error.message)
 		finally 
 			loading = false
 
