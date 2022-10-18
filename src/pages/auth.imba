@@ -6,7 +6,9 @@ export default tag Auth
 	prop pass
 	prop loading = false
 
-	css .container d:flex fld:column
+	css 
+		.container d:flex fld:column
+		button, input m:5px
 
 	def handleSignup
 		const { user, session, error } = await supabase.auth.signUp({

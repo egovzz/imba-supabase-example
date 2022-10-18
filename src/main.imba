@@ -2,7 +2,6 @@ import './app.css'
 
 import { supabase } from './supabaseClient'
 
-import Counter from './components/counter.imba'
 import logo from "./assets/imba.svg"
 import Auth from './pages/auth.imba'
 import Account from './pages/account.imba'
