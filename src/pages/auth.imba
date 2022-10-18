@@ -11,10 +11,13 @@ export default tag Auth
 		button, input m:5px
 
 	def handleSignup
-		const { user, session, error } = await supabase.auth.signUp({
+		const response = await supabase.auth.signUp({
 			email: email,
 			password: pass,
 		})
+
+		if response..data..user
+			window.alert 'User Already Exists'
 
 	def handleLogin
 		try 
@@ -37,5 +40,5 @@ export default tag Auth
 				<input type='text' placeholder='email...' bind=email>
 				<input type='text' placeholder='password...' bind=pass>
 				<div>
-					<button @click=handleSignup> 'Signup'
-					<button @click=handleLogin> 'Login'
+					<button @click=handleSignup disabled=(!email or !pass)> 'Signup'
+					<button @click=handleLogin disabled=(!email or !pass)> 'Login'
