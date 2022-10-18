@@ -38,7 +38,7 @@ export default tag Auth
 				<p> 'Loading....'
 			else
 				<input type='text' placeholder='email...' bind=email>
-				<input type='text' placeholder='password...' bind=pass>
+				<input type='password' placeholder='password...' bind=pass>
 				<div>
 					<button @click=handleSignup disabled=(!email or !pass)> 'Signup'
 					<button @click=handleLogin disabled=(!email or !pass)> 'Login'
