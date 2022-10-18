@@ -64,8 +64,8 @@ export default tag Account
 		finally
 			loading = no
 
-	# def setup
-	# 	getProfile!
+	def setup
+		getProfile!
 
 	<self>
 		<div>
