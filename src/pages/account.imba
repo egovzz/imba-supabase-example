@@ -64,8 +64,8 @@ export default tag Account
 		finally
 			loading = no
 
-	def setup
-		getProfile!
+	# def setup
+	# 	getProfile!
 
 	<self>
 		<div>
@@ -85,6 +85,6 @@ export default tag Account
 						<label htmlFor="website"> 'Website'
 						<input id="website" type="text" bind=website />	
 					<div>
-						<button disabled=loading @click=updateProfile!> 'Update profile'
+						<button.active disabled=loading @click=updateProfile!> 'Update profile'
 		
 		<button @click=supabase.auth.signOut!> 'Log out'

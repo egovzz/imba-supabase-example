@@ -2,6 +2,11 @@ import { supabase } from '../supabaseClient'
 
 export default tag Avatar
 
+	css 
+		.hidden d:none
+		.uploadLabel rd:8px bd:1px solid transparent p:0.6em 1.2em fs:1em fw:500 
+			ff:inherit bgc:#1a1a1a cursor:pointer tween:border-color 0.25s
+
 	prop size = 150
 	prop onUpload
 	prop url
@@ -64,10 +69,9 @@ export default tag Avatar
 			if uploadin
 				<p> 'Uploading'
 			else
-				<div>
-					<label> 'Upload an avatar'
-					<div>
-						<input
+				<div[mt:10px]>
+					<label.uploadLabel.active> 'Upload Avatr'
+						<input.hidden
 							type="file"
 							id="single"
 							accept="image/*"

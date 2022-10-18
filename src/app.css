@@ -67,6 +67,10 @@
 	outline: 4px auto -webkit-focus-ring-color;
   }
 
+  .active {
+	background-color: #646cff !important;
+  }
+
   input {
 	width: 100%;
 	border-radius: 5px;
