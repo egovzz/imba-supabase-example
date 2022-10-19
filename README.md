@@ -1,6 +1,7 @@
 
 ## Imba + Supabase example
 
+
 This is a super-easy example of Imba using Supabase Auth and Storage. 
 
 I set this repo public because (sadly) it is really hard to find code examples for Imba.
