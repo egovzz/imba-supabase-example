@@ -11,3 +11,5 @@ This example is based on Supabase's [Quickstart Guide](https://supabase.com/docs
 More about [Imba](https://imba.io)
 
 More about [Supabase](https://supabase.com/)
+
+Live Demo: https://imba-supabase-example.pages.dev/
